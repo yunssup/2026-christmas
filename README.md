@@ -1,8 +1,164 @@
-# React + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🎄 ✨ 🎁 ✨ 🎄
 
-Currently, two official plugins are available:
+# 신(내)의 한수 : 감정 투자 대작전
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🔔 2026 신내동 크리스마스 투자왕을 찾아라! 🔔
+
+*감정에 투자하고, 이야기를 읽고, 가장 큰 자산을 모은 팀이 승리하는 크리스마스 팀 게임*
+
+<br/>
+
+![React](https://img.shields.io/badge/React-18-1a4a3b?style=for-the-badge&logo=react&logoColor=f1d495)
+![Vite](https://img.shields.io/badge/Vite-5-b3262e?style=for-the-badge&logo=vite&logoColor=f1d495)
+![styled-components](https://img.shields.io/badge/styled--components-6-1a4a3b?style=for-the-badge&logo=styledcomponents&logoColor=f1d495)
+![Mobile](https://img.shields.io/badge/Mobile-Ready-b3262e?style=for-the-badge&logo=googlechrome&logoColor=f1d495)
+
+❄️ ⛄ ❄️ ⛄ ❄️
+
+</div>
+
+---
+
+## 🎅 어떤 게임인가요?
+
+**신(내)의 한수**는 크리스마스 모임에서 여러 팀이 함께 즐기는 **감정 투자 게임**이에요.
+
+매 라운드마다 짧은 **오늘의 소식**이 공개돼요.
+각 팀은 이 소식이 어떤 이야기를 말하는지 추리하고, 그 이야기 속에서 **어떤 감정이 오르고 내릴지** 예측해 투자해요.
+10라운드가 끝났을 때 **자산이 가장 많은 팀**이 올해의 🏆 **신내동 투자왕**이 됩니다!
+
+---
+
+## 🎁 게임 규칙
+
+| | 항목 | 내용 |
+|:-:|:--|:--|
+| 💰 | **초기 자금** | 팀마다 1,000,000원 |
+| 🪙 | **정보 코인** | 팀마다 7개 지급 |
+| 🔔 | **진행** | 총 10라운드 |
+| 💭 | **투자 대상** | 12가지 감정 |
+| 🏆 | **승리 조건** | 최종 자산이 가장 높은 팀 |
+| 👥 | **참가 팀** | 6팀 |
+
+---
+
+## 💭 감정 투자 리스트
+
+<div align="center">
+
+| 🟢 | 🔴 | 🟢 | 🔴 | 🟢 | 🔴 |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| **탐욕** | **사랑** | **질투** | **믿음** | **분노** | **용기** |
+| **나태** | **희망** | **슬픔** | **절제** | **두려움** | **화합** |
+
+</div>
+
+> 🎄 같은 감정이라도 이야기에 따라 크게 오르기도, 반토막이 나기도 해요.
+> 소식 한 줄에 숨은 이야기를 먼저 알아채는 팀이 유리합니다!
+
+---
+
+## 🕯️ 한 라운드의 흐름
+
+```
+ 📜 오늘의 소식 공개
+        │
+        ▼
+ 🤔 팀별 회의 ─ 어떤 이야기일까? 어떤 감정이 오를까?
+        │
+        ▼
+ ✍️  감정별 투자 금액 입력 (보유 자산 안에서만 가능)
+        │
+        ▼
+ 🔔 [수익률 확인] ─ 감정별 등락률 공개, 팀별 수익 정산
+        │
+        ▼
+ 🎄 [다음 라운드] ─ 10라운드 뒤에는 🏆 최종 순위 발표!
+```
+
+- 수익률은 **빨강 = 상승 📈**, **파랑 = 하락 📉** 으로 표시돼요.
+- 투자 금액은 보유 자산을 넘을 수 없도록 자동으로 막혀요.
+- 투자하지 않고 남긴 돈은 그대로 다음 라운드로 이어져요.
+
+---
+
+## ✨ 화면 구성
+
+| 화면 | 설명 |
+|:--|:--|
+| 🎄 **시작 화면** | 게임 제목, 참가 팀, 규칙, 감정 투자 리스트, 🎅 게임 시작하기 버튼 |
+| 🔔 **라운드 화면** | 라운드 진행 표시(오너먼트 10개), 오늘의 소식, 팀별 보유 자산·수익, 투자 입력표 |
+| 🏆 **최종 순위** | 🥇🥈🥉 메달과 함께 6팀의 최종 자산 순위 발표 |
+
+**🎨 크리스마스 디자인**
+- 소나무 초록 · 베리 레드 · 골드 컬러
+- 화면 위로 소복소복 내리는 눈 ❄️
+- 캔디케인 리본 장식과 오너먼트 팀 배지
+
+**📱 모바일 지원**
+- 휴대폰 · 태블릿 · PC 어디서나 화면이 깨지지 않아요
+- 좁은 화면에서는 투자표만 좌우로 밀어서 보고, 팀 이름 열은 고정돼요
+- 투자 금액을 입력할 때 숫자 키패드가 바로 떠요
+
+---
+
+## 🛷 실행 방법
+
+> Node.js 18 이상이 필요해요.
+
+```bash
+git clone https://github.com/yunssup/2026-christmas.git
+```
+
+```bash
+cd 2026-christmas
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+브라우저에서 `http://localhost:5173` 을 열면 게임이 시작돼요. 🎄
+
+배포용으로 빌드하려면:
+
+```bash
+npm run build
+```
+
+---
+
+## 🎀 폴더 구조
+
+```
+src
+├── 🎄 App.jsx                 # 라우팅 (/ , /Gamestart)
+├── 🎨 GlobalStyle.jsx         # 전역 스타일 · 크리스마스 컬러 변수
+├── 🔤 index.css               # 폰트 등록 (경기천년바탕, 마루부리)
+├── components
+│   └── ❄️ Snow.jsx            # 내리는 눈 효과
+└── page
+    ├── 🎁 Start.jsx / Style.jsx          # 시작 화면
+    └── gamestart
+        └── 🔔 Gamestart.jsx / Style.jsx  # 라운드 진행 · 정산 · 최종 순위
+```
+
+---
+
+<div align="center">
+
+⭐ 🎄 ⭐
+
+**Merry Christmas & Happy Investing!**
+
+*올해 당신의 한 수는 어떤 감정인가요?* 🎅
+
+❄️ ⛄ 🎁 ⛄ ❄️
+
+</div>
