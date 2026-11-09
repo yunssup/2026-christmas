@@ -108,8 +108,8 @@ const getEmotionRateLabel = (emotion, round) => {
 
 const getEmotionRateColor = (emotion, round) => {
   const rate = emotionRatesByRound[round]?.[emotion];
-  if (!rate || rate === 1) return "#666";
-  return rate > 1 ? "#ff0000" : "#0080ff";
+  if (!rate || rate === 1) return "#8a7a6a";
+  return rate > 1 ? "#c62828" : "#1e63b5";
 };
 
 // ==========================
@@ -207,152 +207,122 @@ const Gamestart = () => {
   return (
     <S.Container>
       <S.Card2>
+        <S.Ribbon aria-hidden="true" />
         {gameEnd ? (
-          <>
-            <h1 style={{ textAlign: "center", margin: "20px" , fontSize: "32px", fontWeight: 700 }}>
-              🏆 최종 순위
-            </h1>
+          <S.RankingWrap>
+            <S.RankingTitle>🏆 최종 순위</S.RankingTitle>
+            <S.RankingSub>메리 크리스마스! 올해의 신내동 투자왕은?</S.RankingSub>
 
-            <div
-              style={{
-                width: "700px",
-                margin: "0 auto",
-              }}
-            >
+            <S.RankingList>
               {ranking.map((item, index) => (
-                <div
-                  key={item.team}
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding: "20px 30px",
-                    marginBottom: "14px",
-                    borderRadius: "16px",
-                    background:
-                      index === 0
-                        ? "#FFE082"
-                        : index === 1
-                        ? "#E3F2FD"
-                        : index === 2
-                        ? "#FFE0B2"
-                        : "#ffffff",
-                    border: "2px solid #ddd",
-                    fontSize: "24px",
-                    fontWeight: 700,
-                    marginTop: "10px",
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", fontSize: "20px"}}>
-                    {index + 1}등 - {item.team}팀
-                  </div>
-
-                  <div style={{ display: "flex", alignItems: "center", fontSize: "20px" }}>
-                    💰 {formatNumber(item.money)}원
-                  </div>
-                </div>
+                <S.RankingRow key={item.team} $place={index}>
+                  <S.RankingName>
+                    <S.Medal aria-hidden="true">
+                      {["🥇", "🥈", "🥉"][index] ?? "🎁"}
+                    </S.Medal>
+                    {index + 1}등 · {item.team}팀
+                  </S.RankingName>
+                  <S.RankingMoney>{formatNumber(item.money)}원</S.RankingMoney>
+                </S.RankingRow>
               ))}
-            </div>
-          </>
+            </S.RankingList>
+          </S.RankingWrap>
         ) : (
           <>
-            <h2>ROUND {round}</h2>
+            <S.RoundHeader>
+              <S.RoundTitle>
+                ROUND <strong>{round}</strong>
+                <small>/ 10</small>
+              </S.RoundTitle>
+              <S.RoundDots aria-label={`10라운드 중 ${round}라운드`}>
+                {Array.from({ length: 10 }, (_, i) => (
+                  <S.RoundDot key={i} $state={i + 1 < round ? "done" : i + 1 === round ? "now" : "todo"} />
+                ))}
+              </S.RoundDots>
+            </S.RoundHeader>
 
-            <S.newscards>{newsByRound[round]}</S.newscards>
+            <S.newscards>
+              <S.NewsLabel>📜 오늘의 소식</S.NewsLabel>
+              {newsByRound[round]}
+            </S.newscards>
 
             <S.TeamStatusWrap>
-              {teams.map((team) => (
-                <S.TeamStatusCard key={team}>
-                  <h4>{team}팀</h4>
-
-                  <div className="money">
-                    보유 {formatNumber(balances[`team${team}`])}원
-                  </div>
-
-                  <div className="remain">
+              {teams.map((team) => {
+                const profit = Math.floor(getTeamProfit(team) - getTeamTotal(team));
+                return (
+                  <S.TeamStatusCard key={team}>
+                    <h4>{team}팀</h4>
+                    <div className="money">
+                      보유 {formatNumber(balances[`team${team}`])}원
+                    </div>
                     {showResult ? (
-                      <>
-                        수익{" "}
-                        {Math.floor(getTeamProfit(team) - getTeamTotal(team)) >= 0 ? "+" : ""}
-                        {formatNumber(
-                          Math.floor(getTeamProfit(team) - getTeamTotal(team))
-                        )}
-                        원
-                      </>
+                      <div className={`remain ${profit >= 0 ? "up" : "down"}`}>
+                        수익 {profit >= 0 ? "+" : ""}
+                        {formatNumber(profit)}원
+                      </div>
                     ) : (
-                      <>가능 {formatNumber(getRemainingBalance(team))}원</>
+                      <div className="remain">
+                        가능 {formatNumber(getRemainingBalance(team))}원
+                      </div>
                     )}
-                  </div>
-                </S.TeamStatusCard>
-              ))}
+                  </S.TeamStatusCard>
+                );
+              })}
             </S.TeamStatusWrap>
 
-            <S.TableGrid>
-              <S.HeaderCell>팀</S.HeaderCell>
+            <S.ScrollHint>← 표를 좌우로 밀어서 확인하세요 →</S.ScrollHint>
+            <S.TableScroll>
+              <S.TableGrid>
+                <S.HeaderCell $sticky>팀</S.HeaderCell>
 
-              {emotions.map((emotion) => (
-                <S.HeaderCell key={emotion}>
-                  {emotion}
-                  {showResult && (
-                    <>
-                      <br />
-                      <span
-                        style={{
-                          fontSize: "15px",
-                          fontWeight: 700,
-                          color: getEmotionRateColor(emotion, round)
-                        }}
-                      >
+                {emotions.map((emotion) => (
+                  <S.HeaderCell key={emotion}>
+                    {emotion}
+                    {showResult && (
+                      <S.Rate style={{ color: getEmotionRateColor(emotion, round) }}>
                         {getEmotionRateLabel(emotion, round)}
-                      </span>
-                    </>
-                  )}
-                </S.HeaderCell>
-              ))}
+                      </S.Rate>
+                    )}
+                  </S.HeaderCell>
+                ))}
 
-              <S.HeaderCell>합계</S.HeaderCell>
+                <S.HeaderCell>합계</S.HeaderCell>
 
-              {teams.map((team) => (
-                <S.Row key={team}>
-                  <S.TeamCell>
-                    <S.TeamnameCard>{team}팀</S.TeamnameCard>
-                  </S.TeamCell>
+                {teams.map((team) => (
+                  <S.Row key={team}>
+                    <S.TeamCell $sticky>
+                      <S.TeamnameCard>{team}팀</S.TeamnameCard>
+                    </S.TeamCell>
 
-                  {emotions.map((emotion) => (
-                    <S.InputCell key={emotion}>
-                      <input
-                        disabled={showResult}
-                        value={formatNumber(
-                          investments[`team${team}`]?.[emotion] || ""
-                        )}
-                        onChange={(e) =>
-                          handleChange(team, emotion, e.target.value)
-                        }
-                      />
-                    </S.InputCell>
-                  ))}
+                    {emotions.map((emotion) => (
+                      <S.InputCell key={emotion}>
+                        <input
+                          inputMode="numeric"
+                          aria-label={`${team}팀 ${emotion} 투자액`}
+                          disabled={showResult}
+                          value={formatNumber(
+                            investments[`team${team}`]?.[emotion] || ""
+                          )}
+                          onChange={(e) =>
+                            handleChange(team, emotion, e.target.value)
+                          }
+                        />
+                      </S.InputCell>
+                    ))}
 
-                  <S.TeamCell>
-                    <div
-                      style={{
-                        fontSize: "20px",
-                        fontWeight: 700,
-                      }}
-                    >
-                      {formatNumber(getTeamTotal(team))}
-                    </div>
-                  </S.TeamCell>
-                </S.Row>
-              ))}
-            </S.TableGrid>
+                    <S.TotalCell>{formatNumber(getTeamTotal(team))}</S.TotalCell>
+                  </S.Row>
+                ))}
+              </S.TableGrid>
+            </S.TableScroll>
 
             {/* 10라운드 수익률 확인 시 버튼 텍스트가 '최종 결과 보기'로 바뀝니다. */}
-            <S.ProfitButton onClick={showResult ? nextRound : handleResult}>
+            <S.ProfitButton type="button" onClick={showResult ? nextRound : handleResult}>
               {showResult
                 ? round === 10
-                  ? "최종 결과 보기"
-                  : "다음 라운드"
-                : "수익률 확인"}
+                  ? "🏆 최종 결과 보기"
+                  : "🎄 다음 라운드"
+                : "🔔 수익률 확인"}
             </S.ProfitButton>
           </>
         )}

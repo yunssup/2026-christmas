@@ -1,202 +1,266 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const baubleColors = ["#b3262e", "#d9a84e", "#2f7a5f", "#d23c40", "#c9933a", "#1a4a3b"];
 
 /* =========================
    전체 컨테이너
 ========================= */
 export const Container = styled.div`
-  font-family: MaruBuriRegular;
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  width: 100%;
   min-height: 100vh;
-  width: 100vw;
-  padding: 16px;
-  background: #f5faff;
+  min-height: 100dvh;
+  padding: clamp(20px, 5vw, 48px) 16px;
+  padding-bottom: max(clamp(20px, 5vw, 48px), env(safe-area-inset-bottom));
 `;
 
 /* =========================
    카드 레이아웃
 ========================= */
-export const Card = styled.div`
+export const Card = styled.main`
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  padding: clamp(28px, 5vw, 44px) clamp(16px, 4vw, 40px) clamp(20px, 4vw, 32px);
+  overflow: hidden;
   text-align: center;
-  width: 80%;
-  height: 749px;
-  padding: 24px;
 
-  border-radius: 20px;
-  border: 2px solid #cfeaff;
-  background: #ffffff;
-  box-shadow: 0 18px 35px rgba(123, 203, 255, 0.18);
+  border-radius: 28px;
+  background: var(--ivory);
+  border: 2px solid var(--gold-300);
+  box-shadow:
+    0 0 0 6px rgba(217, 168, 78, 0.18),
+    0 30px 60px rgba(0, 0, 0, 0.35);
+`;
 
-  transition: 0.25s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 24px 48px rgba(123, 203, 255, 0.25);
-  }
+// 카드 상단 리본 줄무늬 (캔디케인)
+export const Ribbon = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--berry-600) 0 14px,
+    var(--snow) 14px 28px
+  );
 `;
 
 /* =========================
    제목
 ========================= */
-export const Title = styled.h1`
-  font-size: 34px;
-  font-weight: 700;
-  color: #3b6ea8;
-  padding-top: 18px;
+export const Header = styled.header`
+  margin-bottom: clamp(20px, 4vw, 28px);
 `;
 
-export const SubTitle = styled.h2`
-  font-size: 20px;
-  font-weight: 500;
-  color: #3b6ea8;
-  padding: 10px;
-  margin-top: 10px;
+export const Eyebrow = styled.p`
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--gold-500);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+`;
+
+export const Title = styled.h1`
+  font-family: "경기천년바탕_Regular", serif;
+  font-size: clamp(30px, 7vw, 46px);
+  line-height: 1.15;
+  color: var(--berry-700);
+  word-break: keep-all;
+`;
+
+export const TitleSub = styled.span`
+  display: block;
+  margin-top: 6px;
+  font-size: clamp(18px, 4vw, 24px);
+  color: var(--pine-700);
+`;
+
+export const SubTitle = styled.p`
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(26, 74, 59, 0.08);
+  color: var(--pine-700);
+  font-size: clamp(14px, 3.4vw, 17px);
 `;
 
 /* =========================
-   팀 선택
+   섹션 공통
 ========================= */
-export const boxContainer = styled.div`
+export const Section = styled.section`
+  margin-top: 14px;
+  padding: clamp(14px, 3vw, 20px);
+  text-align: left;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+`;
+
+export const SectionHead = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 12px;
 `;
 
-export const teamcount = styled.span`
-  font-size: 20px;
-  font-weight: 700;
-  color: #3b6ea8;
+export const SectionTitle = styled.h2`
+  font-family: "경기천년바탕_Regular", serif;
+  font-size: clamp(17px, 3.6vw, 20px);
+  color: var(--pine-800);
 `;
 
-export const teamgrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-top: 10px;
-`;
-
-export const team = styled.div`
-  height: 36px;
-  padding: 4px 12px;
-  display: flex;
-  align-items: center;
-
-  border-radius: 14px;
-  background: rgb(153, 236, 255);
-
-  color: #382703;
-  font-size: 15px;
-  font-weight: 600;
+export const Badge = styled.span`
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--pine-700);
+  color: var(--gold-300);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
 `;
 
 /* =========================
-   스토리 카드
+   팀
 ========================= */
-export const cardscript = styled.div`
-  margin-top: 20px;
-  padding: 20px;
-  height: 140px;
+export const TeamGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
 
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 6px 18px rgba(123, 203, 255, 0.15);
+  @media (min-width: 720px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 `;
 
-export const scripttitle = styled.div`
-  font-size: 20px;
-  font-weight: 700;
-  color: #3b6ea8;
-  margin-bottom: 16px;
-`;
+export const Team = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 6px 8px;
 
-export const script = styled.div`
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fffdf8, #fbf1de);
+  border: 1px solid var(--line);
+  color: var(--ink);
   font-size: 15px;
-  font-weight: 400;
-  color: #4a4035;
-  line-height: 1.4;
+  white-space: nowrap;
+`;
+
+export const Bauble = styled.span`
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: ${({ $index }) => baubleColors[($index - 1) % baubleColors.length]};
+  box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.18), inset 2px 2px 0 rgba(255, 255, 255, 0.4);
+`;
+
+/* =========================
+   게임 설명
+========================= */
+export const RuleList = styled.ul`
+  display: grid;
+  gap: 6px;
+`;
+
+export const Rule = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 2px;
+  border-bottom: 1px dashed var(--line);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+`;
+
+export const RuleKey = styled.span`
+  flex: none;
+  color: var(--ink-soft);
+  font-size: 15px;
+`;
+
+export const RuleValue = styled.span`
+  color: var(--ink);
+  font-size: 15px;
+  text-align: right;
+  word-break: keep-all;
 `;
 
 /* =========================
    감정 카드
 ========================= */
-export const emotioncard = styled.div`
-  margin-top: 10px;
-  padding: 20px;
-  height: 230px;
-
-  border-radius: 16px;
-  background: #ffffff;
-  box-shadow: 0 6px 18px rgba(123, 203, 255, 0.15);
-
-  font-size: 24px;
-  font-weight: 700;
-  color: #3b6ea8;
-`;
-
-export const emotiongrid = styled.div`
-  width: 100%;
+export const EmotionGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
 
-  gap: 16px;
-  padding: 20px;
-
-  justify-items: center;
-  align-items: center;
-  box-sizing: border-box;
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+  @media (min-width: 820px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 `;
 
-export const ecard = styled.div`
-  width: 300px;
-  padding: 10px;
+export const Emotion = styled.div`
+  padding: 10px 4px;
   text-align: center;
-
-  border-radius: 14px;
-  background: #7bcbff;
-  color: #ffffff;
-
+  border-radius: 12px;
+  color: #fff;
   font-size: 16px;
-  font-weight: 600;
-  box-shadow: 0 6px 14px rgba(123, 203, 255, 0.35);
-`;
 
-export const ecard2 = styled(ecard)`
-  background: #ff8f7a;
-  box-shadow: 0 6px 14px rgba(255, 143, 122, 0.35);
+  ${({ $tone }) =>
+    $tone === "red"
+      ? css`
+          background: linear-gradient(180deg, var(--berry-500), var(--berry-700));
+          box-shadow: 0 4px 10px rgba(142, 27, 36, 0.25);
+        `
+      : css`
+          background: linear-gradient(180deg, var(--pine-500), var(--pine-700));
+          box-shadow: 0 4px 10px rgba(26, 74, 59, 0.25);
+        `}
 `;
 
 /* =========================
    시작 버튼
 ========================= */
-export const start = styled.div`
-  margin-top: 14px;
-  padding: 12px;
-  text-align: center;
+export const StartButton = styled.button`
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: clamp(20px, 4vw, 28px) auto 0;
+  padding: 16px 24px;
 
   border-radius: 999px;
-  background: #3ba9ff;
-  color: #ffffff;
-
+  background: linear-gradient(180deg, var(--berry-500), var(--berry-700));
+  border: 2px solid var(--gold-300);
+  color: #fff;
   font-size: 18px;
-  font-weight: 700;
-  box-shadow: 0 6px 14px rgba(59, 169, 255, 0.35);
-`;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 24px rgba(142, 27, 36, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 
-/* =========================
-   사이드 카드
-========================= */
-export const Cardlist = styled.div`
-  width: 180px;
-  height: 749px;
-  padding: 24px;
-  margin-right: 18px;
-
-  border-radius: 20px;
-  border: 1px solid #d9eeff;
-  background: #ffffff;
-
-  font-size: 18px;
-  font-weight: 700;
-  color: #3b6ea8;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(142, 27, 36, 0.45);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+  &:focus-visible {
+    outline: 3px solid var(--gold-500);
+    outline-offset: 3px;
+  }
 `;
