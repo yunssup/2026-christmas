@@ -199,6 +199,37 @@ export const TeamStatusCard = styled.div`
   .remain.down {
     color: #1e63b5;
   }
+
+  ${({ $submitted }) =>
+    $submitted &&
+    css`
+      border-color: var(--pine-500);
+      background: #f1f9f4;
+    `}
+`;
+
+export const SubmitMark = styled.span`
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--pine-500);
+  color: #fff;
+  font-family: "MaruBuri", serif;
+  font-size: 12px;
+  vertical-align: middle;
+`;
+
+export const SubmitSummary = styled.p`
+  margin: -6px 0 10px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--pine-700);
+
+  strong {
+    color: var(--berry-600);
+    font-size: 1.2em;
+  }
 `;
 
 /* =========================
@@ -455,4 +486,138 @@ export const RankingMoney = styled.span`
   color: var(--pine-800);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+`;
+
+/* =========================
+   진행자 도구 (연결 상태 · QR · 새 게임)
+========================= */
+export const HostBar = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+`;
+
+export const ConnBadge = styled.span`
+  font-size: 13px;
+  color: ${({ $ok }) => ($ok ? "var(--pine-500)" : "var(--berry-600)")};
+`;
+
+export const HostButtons = styled.div`
+  display: flex;
+  gap: 6px;
+`;
+
+export const SmallButton = styled.button`
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--pine-700);
+  font-size: 14px;
+
+  &:hover {
+    border-color: var(--gold-500);
+  }
+`;
+
+export const Loading = styled.p`
+  padding: 60px 0;
+  text-align: center;
+  font-size: 18px;
+  color: var(--ink-soft);
+`;
+
+/* =========================
+   QR 안내 창
+========================= */
+export const ModalBackdrop = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(11, 35, 29, 0.7);
+`;
+
+export const ModalCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 24px 20px 20px;
+  border-radius: 22px;
+  background: var(--ivory);
+  border: 2px solid var(--gold-300);
+  text-align: center;
+`;
+
+export const ModalTitle = styled.h2`
+  font-family: "경기천년바탕_Regular", serif;
+  font-size: 24px;
+  color: var(--pine-800);
+`;
+
+export const QrBox = styled.div`
+  padding: 8px;
+  border-radius: 12px;
+  background: #fff;
+  line-height: 0;
+`;
+
+export const QrUrl = styled.p`
+  font-size: 16px;
+  color: var(--berry-700);
+  word-break: break-all;
+`;
+
+export const ModalText = styled.p`
+  font-size: 15px;
+  color: var(--ink-soft);
+`;
+
+export const ModalWarn = styled.p`
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fff4d6;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  text-align: left;
+  word-break: keep-all;
+`;
+
+export const ModalTeamLinks = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+
+  a {
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--pine-700);
+    font-size: 13px;
+    text-decoration: none;
+  }
+`;
+
+export const ModalClose = styled.button`
+  margin-top: 4px;
+  padding: 10px 40px;
+  border-radius: 999px;
+  border: 2px solid var(--gold-300);
+  background: linear-gradient(180deg, var(--berry-500), var(--berry-700));
+  color: #fff;
+  font-size: 16px;
 `;
