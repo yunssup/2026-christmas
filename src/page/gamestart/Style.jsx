@@ -13,6 +13,12 @@ export const Container = styled.div`
   min-height: 100dvh;
   padding: clamp(12px, 3vw, 28px) clamp(8px, 2.5vw, 32px);
   padding-bottom: max(clamp(12px, 3vw, 28px), env(safe-area-inset-bottom));
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    height: 100vh;
+    height: 100dvh;
+    padding: 1.6vh 20px;
+  }
 `;
 
 /* =========================
@@ -32,6 +38,14 @@ export const Card2 = styled.main`
   box-shadow:
     0 0 0 6px rgba(217, 168, 78, 0.18),
     0 30px 60px rgba(0, 0, 0, 0.35);
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    padding: 2.6vh 24px 1.8vh;
+  }
 `;
 
 export const Ribbon = styled.div`
@@ -57,6 +71,14 @@ export const RoundHeader = styled.div`
   justify-content: space-between;
   gap: 10px 16px;
   margin-bottom: 12px;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.8vh;
+    margin-bottom: 0;
+  }
 `;
 
 export const RoundTitle = styled.h2`
@@ -74,6 +96,10 @@ export const RoundTitle = styled.h2`
     margin-left: 6px;
     font-size: 0.6em;
     color: var(--ink-soft);
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    font-size: clamp(24px, 4vh, 38px);
   }
 `;
 
@@ -125,6 +151,12 @@ export const newscards = styled.div`
   line-height: 1.55;
   color: var(--ink);
   word-break: keep-all;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin: 0;
+    padding: 1.4vh 20px;
+    font-size: clamp(17px, 2.6vh, 24px);
+  }
 `;
 
 export const NewsLabel = styled.span`
@@ -151,6 +183,12 @@ export const TeamStatusWrap = styled.div`
   @media (min-width: 1100px) {
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 1.4vh;
   }
 `;
 
@@ -206,6 +244,19 @@ export const TeamStatusCard = styled.div`
       border-color: var(--pine-500);
       background: #f1f9f4;
     `}
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    padding: 1.1vh 8px 0.9vh;
+
+    h4 {
+      margin-bottom: 0.4vh;
+      font-size: clamp(17px, 2.6vh, 24px);
+    }
+    .money,
+    .remain {
+      font-size: clamp(13px, 1.9vh, 18px);
+    }
+  }
 `;
 
 export const SubmitMark = styled.span`
@@ -221,7 +272,8 @@ export const SubmitMark = styled.span`
 `;
 
 export const SubmitSummary = styled.p`
-  margin: -6px 0 10px;
+  flex-basis: 100%;
+  margin: 0;
   text-align: center;
   font-size: 16px;
   color: var(--pine-700);
@@ -229,6 +281,12 @@ export const SubmitSummary = styled.p`
   strong {
     color: var(--berry-600);
     font-size: 1.2em;
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    flex-basis: auto;
+    text-align: left;
+    font-size: clamp(15px, 2.2vh, 20px);
   }
 `;
 
@@ -242,7 +300,7 @@ export const ScrollHint = styled.p`
   font-size: 12px;
   color: var(--ink-soft);
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1023px) {
     display: block;
   }
 `;
@@ -255,6 +313,13 @@ export const TableScroll = styled.div`
   border-radius: 18px;
   border: 1px solid var(--line);
   background: #fff;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    overflow: hidden;
+  }
 `;
 
 export const TableGrid = styled.div`
@@ -264,9 +329,16 @@ export const TableGrid = styled.div`
   width: max-content;
   padding: 10px;
 
-  @media (min-width: 1100px) {
+  @media (min-width: 1024px) {
     width: auto;
     grid-template-columns: 76px repeat(12, minmax(0, 1fr)) 110px;
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    flex: 1;
+    grid-template-rows: auto repeat(6, minmax(0, 1fr));
+    padding: 1vh 10px;
+    row-gap: 0.8vh;
   }
 `;
 
@@ -299,6 +371,11 @@ export const HeaderCell = styled.div`
   white-space: nowrap;
 
   ${({ $sticky }) => $sticky && stickyCol}
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    padding: 0.9vh 2px;
+    font-size: clamp(14px, 2vh, 18px);
+  }
 `;
 
 export const Rate = styled.span`
@@ -324,11 +401,19 @@ export const TeamCell = styled.div`
   color: #fff;
 
   ${({ $sticky }) => $sticky && stickyCol}
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    min-height: 0;
+  }
 `;
 
 export const TeamnameCard = styled.div`
   font-size: 17px;
   white-space: nowrap;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    font-size: clamp(15px, 2.3vh, 20px);
+  }
 `;
 
 export const TotalCell = styled.div`
@@ -344,6 +429,11 @@ export const TotalCell = styled.div`
   font-size: 17px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    min-height: 0;
+    font-size: clamp(15px, 2.3vh, 20px);
+  }
 `;
 
 /* =========================
@@ -368,8 +458,14 @@ export const InputCell = styled.div`
     font-variant-numeric: tabular-nums;
     transition: border-color 0.15s, box-shadow 0.15s;
 
-    @media (min-width: 1100px) {
+    @media (min-width: 1024px) {
       font-size: 14px;
+    }
+    @media (min-width: 1024px) and (min-height: 540px) {
+      height: 100%;
+      max-height: 52px;
+      min-height: 26px;
+      font-size: clamp(13px, 1.9vh, 18px);
     }
   }
 
@@ -382,6 +478,11 @@ export const InputCell = styled.div`
   input:disabled {
     background: #f4ece0;
     color: var(--ink-soft);
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    align-items: stretch;
+    min-height: 0;
   }
 `;
 
@@ -411,6 +512,12 @@ export const ProfitButton = styled.button`
     outline: 3px solid var(--gold-500);
     outline-offset: 3px;
   }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    flex: none;
+    margin-top: 1.6vh;
+    padding: 1.4vh 34px;
+  }
 `;
 
 /* =========================
@@ -422,6 +529,10 @@ export const RankingWrap = styled.div`
   margin: 0 auto;
   padding: 8px 0 12px;
   text-align: center;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin: auto;
+  }
 `;
 
 export const RankingTitle = styled.h1`
@@ -439,6 +550,10 @@ export const RankingSub = styled.p`
 export const RankingList = styled.ol`
   display: grid;
   gap: 10px;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    gap: 1vh;
+  }
 `;
 
 const placeStyles = [
@@ -466,6 +581,10 @@ export const RankingRow = styled.li`
   background: #fff;
 
   ${({ $place }) => placeStyles[$place]}
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    padding: 1.4vh 28px;
+  }
 `;
 
 export const RankingName = styled.span`
@@ -498,6 +617,10 @@ export const HostBar = styled.div`
   justify-content: space-between;
   gap: 8px;
   margin-bottom: 12px;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin-bottom: 1vh;
+  }
 `;
 
 export const ConnBadge = styled.span`
@@ -528,4 +651,17 @@ export const Loading = styled.p`
   text-align: center;
   font-size: 18px;
   color: var(--ink-soft);
+`;
+
+/* =========================
+   라운드 + 소식 한 줄 (큰 화면)
+========================= */
+export const TopRow = styled.div`
+  @media (min-width: 1024px) and (min-height: 540px) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: stretch;
+    gap: 20px;
+    margin-bottom: 1.4vh;
+  }
 `;

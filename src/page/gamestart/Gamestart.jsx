@@ -156,22 +156,29 @@ const Gamestart = () => {
           </S.RankingWrap>
         ) : (
           <>
-            <S.RoundHeader>
-              <S.RoundTitle>
-                ROUND <strong>{round}</strong>
-                <small>/ {TOTAL_ROUNDS}</small>
-              </S.RoundTitle>
-              <S.RoundDots aria-label={`${TOTAL_ROUNDS}라운드 중 ${round}라운드`}>
-                {Array.from({ length: TOTAL_ROUNDS }, (_, i) => (
-                  <S.RoundDot key={i} $state={i + 1 < round ? "done" : i + 1 === round ? "now" : "todo"} />
-                ))}
-              </S.RoundDots>
-            </S.RoundHeader>
+            <S.TopRow>
+              <S.RoundHeader>
+                <S.RoundTitle>
+                  ROUND <strong>{round}</strong>
+                  <small>/ {TOTAL_ROUNDS}</small>
+                </S.RoundTitle>
+                <S.RoundDots aria-label={`${TOTAL_ROUNDS}라운드 중 ${round}라운드`}>
+                  {Array.from({ length: TOTAL_ROUNDS }, (_, i) => (
+                    <S.RoundDot key={i} $state={i + 1 < round ? "done" : i + 1 === round ? "now" : "todo"} />
+                  ))}
+                </S.RoundDots>
+                {!showResult && (
+                  <S.SubmitSummary>
+                    🎅 제출 완료 <strong>{submittedCount}</strong> / {teams.length}팀
+                  </S.SubmitSummary>
+                )}
+              </S.RoundHeader>
 
-            <S.newscards>
-              <S.NewsLabel>📜 오늘의 소식</S.NewsLabel>
-              {newsByRound[round]}
-            </S.newscards>
+              <S.newscards>
+                <S.NewsLabel>📜 오늘의 소식</S.NewsLabel>
+                {newsByRound[round]}
+              </S.newscards>
+            </S.TopRow>
 
             <S.TeamStatusWrap>
               {teams.map((team) => {
@@ -199,12 +206,6 @@ const Gamestart = () => {
                 );
               })}
             </S.TeamStatusWrap>
-
-            {!showResult && (
-              <S.SubmitSummary>
-                🎅 제출 완료 <strong>{submittedCount}</strong> / {teams.length}팀
-              </S.SubmitSummary>
-            )}
 
             <S.ScrollHint>← 표를 좌우로 밀어서 확인하세요 →</S.ScrollHint>
             <S.TableScroll>

@@ -16,6 +16,11 @@ export const Container = styled.div`
   min-height: 100dvh;
   padding: clamp(20px, 5vw, 48px) 16px;
   padding-bottom: max(clamp(20px, 5vw, 48px), env(safe-area-inset-bottom));
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    align-items: center;
+    padding: 2vh 24px;
+  }
 `;
 
 /* =========================
@@ -35,6 +40,11 @@ export const Card = styled.main`
   box-shadow:
     0 0 0 6px rgba(217, 168, 78, 0.18),
     0 30px 60px rgba(0, 0, 0, 0.35);
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    max-width: clamp(1120px, 135vh, 1500px);
+    padding: 3.2vh 32px 2.4vh;
+  }
 `;
 
 // 카드 상단 리본 줄무늬 (캔디케인)
@@ -56,6 +66,10 @@ export const Ribbon = styled.div`
 ========================= */
 export const Header = styled.header`
   margin-bottom: clamp(20px, 4vw, 28px);
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin-bottom: 2vh;
+  }
 `;
 
 export const Eyebrow = styled.p`
@@ -64,6 +78,10 @@ export const Eyebrow = styled.p`
   color: var(--gold-500);
   text-transform: uppercase;
   margin-bottom: 10px;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin-bottom: 0.6vh;
+  }
 `;
 
 export const Title = styled.h1`
@@ -72,6 +90,10 @@ export const Title = styled.h1`
   line-height: 1.15;
   color: var(--berry-700);
   word-break: keep-all;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    font-size: clamp(32px, 5.4vh, 54px);
+  }
 `;
 
 export const TitleSub = styled.span`
@@ -79,6 +101,11 @@ export const TitleSub = styled.span`
   margin-top: 6px;
   font-size: clamp(18px, 4vw, 24px);
   color: var(--pine-700);
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin-top: 0.4vh;
+    font-size: clamp(18px, 2.8vh, 28px);
+  }
 `;
 
 export const SubTitle = styled.p`
@@ -89,6 +116,15 @@ export const SubTitle = styled.p`
   background: rgba(26, 74, 59, 0.08);
   color: var(--pine-700);
   font-size: clamp(14px, 3.4vw, 17px);
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin-top: 1.2vh;
+    padding: 4px 18px;
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    font-size: clamp(14px, 2vh, 21px);
+  }
 `;
 
 /* =========================
@@ -101,6 +137,11 @@ export const Section = styled.section`
   border-radius: 20px;
   background: #fff;
   border: 1px solid var(--line);
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin-top: 0;
+    padding: 1.8vh 20px;
+  }
 `;
 
 export const SectionHead = styled.div`
@@ -108,12 +149,20 @@ export const SectionHead = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin-bottom: 1.2vh;
+  }
 `;
 
 export const SectionTitle = styled.h2`
   font-family: "경기천년바탕_Regular", serif;
   font-size: clamp(17px, 3.6vw, 20px);
   color: var(--pine-800);
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    font-size: clamp(17px, 2.5vh, 26px);
+  }
 `;
 
 export const Badge = styled.span`
@@ -123,6 +172,10 @@ export const Badge = styled.span`
   color: var(--gold-300);
   font-size: 13px;
   font-variant-numeric: tabular-nums;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    font-size: clamp(13px, 1.7vh, 18px);
+  }
 `;
 
 /* =========================
@@ -134,6 +187,10 @@ export const TeamGrid = styled.div`
   gap: 8px;
 
   @media (min-width: 720px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 `;
@@ -152,6 +209,13 @@ export const Team = styled.div`
   color: var(--ink);
   font-size: 15px;
   white-space: nowrap;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    min-height: clamp(36px, 5.4vh, 64px);
+    gap: 6px;
+    padding: 4px;
+    font-size: clamp(14px, 1.9vh, 20px);
+  }
 `;
 
 export const Bauble = styled.span`
@@ -169,6 +233,10 @@ export const Bauble = styled.span`
 export const RuleList = styled.ul`
   display: grid;
   gap: 6px;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    gap: 0;
+  }
 `;
 
 export const Rule = styled.li`
@@ -182,12 +250,20 @@ export const Rule = styled.li`
   &:last-child {
     border-bottom: 0;
   }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    padding: 1.3vh 2px;
+  }
 `;
 
 export const RuleKey = styled.span`
   flex: none;
   color: var(--ink-soft);
   font-size: 15px;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    font-size: clamp(15px, 2.1vh, 22px);
+  }
 `;
 
 export const RuleValue = styled.span`
@@ -195,6 +271,10 @@ export const RuleValue = styled.span`
   font-size: 15px;
   text-align: right;
   word-break: keep-all;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    font-size: clamp(15px, 2.1vh, 22px);
+  }
 `;
 
 /* =========================
@@ -211,6 +291,11 @@ export const EmotionGrid = styled.div`
   }
   @media (min-width: 820px) {
     grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
   }
 `;
 
@@ -231,6 +316,14 @@ export const Emotion = styled.div`
           background: linear-gradient(180deg, var(--pine-500), var(--pine-700));
           box-shadow: 0 4px 10px rgba(26, 74, 59, 0.25);
         `}
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    padding: 1.4vh 4px;
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    font-size: clamp(16px, 2.3vh, 24px);
+  }
 `;
 
 /* =========================
@@ -263,6 +356,12 @@ export const StartButton = styled.button`
     outline: 3px solid var(--gold-500);
     outline-offset: 3px;
   }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin: 0;
+    padding: 1.8vh 24px;
+    font-size: clamp(17px, 2.3vh, 24px);
+  }
 `;
 
 /* =========================
@@ -288,5 +387,49 @@ export const QrButton = styled.button`
   &:focus-visible {
     outline: 3px solid var(--gold-500);
     outline-offset: 3px;
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    margin: 0;
+    padding: 1.8vh 24px;
+    font-size: clamp(17px, 2.3vh, 24px);
+  }
+`;
+
+/* =========================
+   큰 화면: 한 화면에 다 보이게 배치
+========================= */
+export const Body = styled.div`
+  @media (min-width: 1024px) and (min-height: 540px) {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 14px;
+    align-items: stretch;
+  }
+`;
+
+export const Column = styled.div`
+  @media (min-width: 1024px) and (min-height: 540px) {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    & > section:last-child {
+      flex: 1;
+    }
+  }
+`;
+
+export const ButtonRow = styled.div`
+  @media (min-width: 1024px) and (min-height: 540px) {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 2.4vh;
+
+    & > button {
+      flex: 1;
+      max-width: clamp(320px, 40vh, 460px);
+    }
   }
 `;

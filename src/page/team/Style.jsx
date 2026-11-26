@@ -12,6 +12,11 @@ export const Container = styled.div`
   min-height: 100vh;
   min-height: 100dvh;
   padding: 12px 10px max(12px, env(safe-area-inset-bottom));
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    align-items: center;
+    padding: 2vh 24px;
+  }
 `;
 
 export const Card = styled.main`
@@ -27,6 +32,11 @@ export const Card = styled.main`
   box-shadow:
     0 0 0 5px rgba(217, 168, 78, 0.18),
     0 24px 50px rgba(0, 0, 0, 0.35);
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    max-width: 1040px;
+    padding: 3vh 28px 2vh;
+  }
 `;
 
 export const Ribbon = styled.div`
@@ -46,6 +56,16 @@ export const Page = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 1.6vh 14px;
+
+    & > * {
+      grid-column: 1 / -1;
+    }
+  }
 `;
 
 export const Center = styled.div`
@@ -183,6 +203,12 @@ export const News = styled.div`
     letter-spacing: 0.08em;
     color: var(--gold-500);
   }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    && {
+      grid-column: auto;
+    }
+  }
 `;
 
 export const MoneyRow = styled.div`
@@ -209,6 +235,17 @@ export const MoneyRow = styled.div`
   }
   strong.zero {
     color: var(--berry-600);
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    && {
+      grid-column: auto;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 `;
 
@@ -259,6 +296,11 @@ export const Notice = styled.div`
 export const EmotionList = styled.div`
   display: grid;
   gap: 6px;
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
 `;
 
 export const EmotionRow = styled.div`
@@ -339,6 +381,31 @@ export const Footer = styled.div`
     font-size: 18px;
     color: var(--ink);
     font-variant-numeric: tabular-nums;
+  }
+
+  @media (min-width: 1024px) and (min-height: 540px) {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0;
+    padding: 1.4vh 4px 0;
+    background: none;
+    box-shadow: none;
+
+    .sum {
+      gap: 12px;
+      align-items: baseline;
+      font-size: 17px;
+    }
+    .sum strong {
+      font-size: 22px;
+    }
+    button {
+      max-width: 320px;
+      align-self: auto;
+    }
   }
 `;
 
