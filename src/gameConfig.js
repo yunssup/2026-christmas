@@ -7,13 +7,13 @@
 //    databaseURL 이 비어 있으면 "혼자 테스트 모드"로 동작해요.
 //    (같은 컴퓨터·같은 브라우저의 탭끼리만 연동, 휴대폰과는 연동 안 됨)
 export const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyCjD0xJkyFPDq6uURE3i8XnoGTLJJNj__o",
+  authDomain: "christmas-game-d4c5c.firebaseapp.com",
+  databaseURL: "https://christmas-game-d4c5c-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "christmas-game-d4c5c",
+  storageBucket: "christmas-game-d4c5c.firebasestorage.app",
+  messagingSenderId: "996814890455",
+  appId: "1:996814890455:web:139307c72d363f5a9e9792"
 };
 
 // 2) 게임 방 이름 — 캠프마다 바꾸면 지난 캠프 기록과 섞이지 않아요.
