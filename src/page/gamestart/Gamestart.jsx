@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { QRCodeSVG } from "qrcode.react";
 import * as S from "../gamestart/Style";
 import {
   emotions,
@@ -18,47 +17,7 @@ import {
   getEmotionRateColor
 } from "../../data/rates";
 import { useGame, updateGame, resetGame, isFirebaseMode } from "../../sync/gameStore";
-
-// ==========================
-// 팀 입력 QR 안내 창
-// ==========================
-const QrModal = ({ onClose }) => {
-  const url = `${window.location.origin}/team`;
-  const isLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
-
-  return (
-    <S.ModalBackdrop onClick={onClose}>
-      <S.ModalCard onClick={(e) => e.stopPropagation()} role="dialog" aria-label="팀 입력 QR코드">
-        <S.ModalTitle>📱 휴대폰으로 투자하기</S.ModalTitle>
-        <S.QrBox>
-          <QRCodeSVG value={url} size={240} marginSize={2} />
-        </S.QrBox>
-        <S.QrUrl>{url}</S.QrUrl>
-        <S.ModalText>카메라로 QR코드를 찍고 우리 팀을 고르세요.</S.ModalText>
-        {!isFirebaseMode && (
-          <S.ModalWarn>
-            ⚠️ 지금은 Firebase 설정 전이라 <b>이 컴퓨터의 다른 탭에서만</b> 연동돼요.
-            휴대폰과 연동하려면 src/gameConfig.js 를 채워 주세요.
-          </S.ModalWarn>
-        )}
-        {isFirebaseMode && isLocalhost && (
-          <S.ModalWarn>
-            ⚠️ 지금 주소가 localhost 라서 휴대폰에서는 열리지 않아요.
-            배포된 주소(예: Vercel)에서 이 창을 열어 주세요.
-          </S.ModalWarn>
-        )}
-        <S.ModalTeamLinks>
-          {teams.map((t) => (
-            <a key={t} href={`/team/${t}`} target="_blank" rel="noreferrer">
-              {t}팀 화면
-            </a>
-          ))}
-        </S.ModalTeamLinks>
-        <S.ModalClose type="button" onClick={onClose}>닫기</S.ModalClose>
-      </S.ModalCard>
-    </S.ModalBackdrop>
-  );
-};
+import QrModal from "../../components/QrModal";
 
 // ==========================
 // 컴포넌트

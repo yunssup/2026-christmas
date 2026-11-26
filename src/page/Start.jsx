@@ -1,6 +1,7 @@
-import React from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./Style";
+import QrModal from "../components/QrModal";
 
 const teams = [1, 2, 3, 4, 5, 6];
 
@@ -21,6 +22,7 @@ const emotions = [
 
 const Start = () => {
   const navigate = useNavigate();
+  const [showQr, setShowQr] = useState(false);
 
   return (
     <S.Container>
@@ -81,7 +83,12 @@ const Start = () => {
         <S.StartButton type="button" onClick={() => navigate("/Gamestart")}>
           🎅 게임 시작하기
         </S.StartButton>
+        <S.QrButton type="button" onClick={() => setShowQr(true)}>
+          📱 팀 입력 QR 띄우기
+        </S.QrButton>
       </S.Card>
+
+      {showQr && <QrModal onClose={() => setShowQr(false)} />}
     </S.Container>
   );
 };

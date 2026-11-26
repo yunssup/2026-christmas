@@ -264,3 +264,29 @@ export const StartButton = styled.button`
     outline-offset: 3px;
   }
 `;
+
+/* =========================
+   팀 입력 QR 버튼
+========================= */
+export const QrButton = styled.button`
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin: 12px auto 0;
+  padding: 14px 24px;
+
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--pine-500);
+  color: var(--pine-700);
+  font-size: 17px;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: rgba(47, 122, 95, 0.08);
+  }
+  &:focus-visible {
+    outline: 3px solid var(--gold-500);
+    outline-offset: 3px;
+  }
+`;
